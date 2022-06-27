@@ -1,0 +1,21 @@
+.container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;    
+    padding: 0 15px;
+}
+.date_wrapper {
+    display: flex;
+    align-items: center;
+}
+.day {
+    font-size: 35px;
+    margin-right: 5px;
+}
+.month_year{
+    font-size: 13px;
+    text-transform: uppercase;
+}
+.weekday {
+    text-transform: uppercase;
+}

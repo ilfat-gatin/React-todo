@@ -1,0 +1,16 @@
+.list{
+    overflow-y: scroll;
+    height: 400px;
+}
+.list::-webkit-scrollbar {
+    width: 7px;
+    background-color: #f9f9fd;
+    border-radius: 10px;
+}
+.list::-webkit-scrollbar-thumb {
+    background-color: lightgrey;
+    border-radius: 10px;
+}
+.btn{    
+    width: 100%;
+}
