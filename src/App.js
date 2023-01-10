@@ -6,14 +6,12 @@ import classes from "./app.module.css"
 function App() {
 
   return (
-    <React.StrictMode>
     <div className={classes.wrapper}>
       <div className={classes.container}>
         <Header />
         <TodoList />        
       </div>
-    </div>
-    </React.StrictMode>   
+    </div>  
   );
 }
 

@@ -9,3 +9,9 @@
     text-decoration: line-through;
     color: lightgray;
 }
+
+.listitem_wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
