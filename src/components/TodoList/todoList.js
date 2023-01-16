@@ -3,6 +3,7 @@ import { TodoItem } from "../TodoItem/todoItem"
 import classes from './todoList.module.css'
 import { List, Button, TextField, Dialog, DialogActions, DialogContent, DialogTitle  } from "@mui/material/";
 import { nanoid } from 'nanoid'
+import axios from "axios";
 
 
 export const TodoList = () => {
@@ -12,45 +13,40 @@ export const TodoList = () => {
 
     const scrollRef = useRef()
 
-    useEffect(() => {                   
-        fetch('https://jsonplaceholder.typicode.com/todos?userId=1')
-        .then(response => response.json())
-        .then((json) => {
-            setTodoList((state) => [...state, ...json],)
-        })
+    useEffect(() => {
+      axios.get('https://jsonplaceholder.typicode.com/todos?userId=1')
+      .then( ({data}) => setTodoList((state) => [...state, ...data]))
+      .catch( error => console.log(error))
     }, [])
 
     useEffect(() => {
         if (scrollRef.current) {
           scrollRef.current.scrollTo(0, scrollRef.current.scrollHeight)
         }
-      }, [todoList])
+    }, [todoList])
 
     const addNewToDo = () => {
         if (text) {
-          const arr = todoList
-          arr.push({
-            title: text,
-            id: arr.length + 1,
-            completed: false
-        })
-          setTodoList(arr)
+          setTodoList([...todoList, {
+              title: text,
+              id: nanoid(),
+              completed: false
+          }])
         }
     }
 
-    const onComplete = (key) => {
+    const onComplete = (id) => {
       const arr = todoList
       arr.forEach(item => {
-        if (item.id === key+1) {
+        if (item.id === id) {
           item.completed = !item.completed
         }
       })
       setTodoList(arr)
     }
 
-    const onDelete = (key) => {
-      const arr = todoList.filter(item => item.id !== key+1)
-      setTodoList(arr)
+    const onDelete = (id) => {
+      setTodoList(() => todoList.filter(item => item.id !== id))
     }
 
     const handleClickOpen = () => {
@@ -65,7 +61,7 @@ export const TodoList = () => {
     return <div>
         <List className={classes.list} ref={scrollRef}>
             {todoList.map((item, idx) => {
-                return <TodoItem text={item.title} completed={item.completed} key={nanoid()} onDelete={onDelete} onComplete={onComplete} id={idx}/>
+                return <TodoItem text={item.title} completed={item.completed} key={nanoid()} onDelete={onDelete} onComplete={onComplete} id={item.id}/>
             })}            
         </List>
         <Button className={classes.btn} variant="contained" onClick={handleClickOpen}>Add</Button> 

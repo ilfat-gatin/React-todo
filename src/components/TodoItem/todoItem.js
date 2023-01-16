@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Checkbox, ListItem, ListItemButton, ListItemText, IconButton, SvgIcon } from "@mui/material"
+import { Checkbox, ListItem, ListItemButton, ListItemText, IconButton } from "@mui/material"
 import DeleteIcon from '@mui/icons-material/Delete';
 import classes from "./todoItem.module.css"
 import { useState } from 'react';
