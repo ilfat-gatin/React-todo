@@ -1,7 +1,7 @@
 # Список дел
 ![image](https://user-images.githubusercontent.com/108275492/212657416-0114564d-c25f-4583-95f5-b699c2196f78.png)
 
-Личный проект для практики использования React. Список дел в начале асинхронно загружается из фейкового API https://jsonplaceholder.typicode.com/todos
+Личный проект для практики использования React. Список дел в начале асинхронно загружается из фейкового API https://jsonplaceholder.typicode.com/todos с помощью axios.\
 Каждое дело можно отмечать выполненным и удалять. При нажатии на кнопку Add открывается форма для добавления нового дела.
 
 ![image](https://user-images.githubusercontent.com/108275492/212658212-b51562cd-24d0-4c9f-9325-19f9ad51fac8.png)
